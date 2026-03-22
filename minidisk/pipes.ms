@@ -29,3 +29,17 @@ end for
 upcomingPipes = pipeQueue.create
 pipeQueueDisplay.setup upcomingPipes, queueOrigin
 pipeQueueDisplay.show display(4)
+
+mouseWasDown = false
+while not key.pressed("escape")
+    if not mouseWasDown and mouse.button then
+        upcomingPipes.pullPipe
+        nextType = upcomingPipes.addPipe
+        pipeQueueDisplay.nextPipe nextType
+    end if
+    mouseWasDown = mouse.button
+    yield
+end while
+key.clear
+reset
+clear

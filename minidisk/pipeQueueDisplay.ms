@@ -15,8 +15,8 @@ spriteDisplay = {}
 setup = function(queue, position)
     qa.assert queue isa pipeQueue.pipeQueue, "Argument 0 needs to be a pipeQueue!"
     qa.assert position isa map and position.hasIndex("x") and position.hasIndex("y"), "Argument 1 needs to be a map containing keys x and y!"
-    origin = {"x" : position.x, "y": position.y}
-    pipeCount = queue.pipes.len
+    outer.origin = {"x" : position.x, "y": position.y}
+    outer.pipeCount = queue.pipes.len
     for i in range(0, queue.pipes.len-1)
         sprite = new Sprite
         sprite.image = pipeImages[queue.pipes[i]]
