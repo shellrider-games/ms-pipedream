@@ -31,12 +31,18 @@ pipeQueueDisplay.setup upcomingPipes, queueOrigin
 pipeQueueDisplay.show display(4)
 
 mouseWasDown = false
+lastTimestamp = time
+
 while not key.pressed("escape")
-    if not mouseWasDown and mouse.button then
+    currentTime = time
+    delta = currentTime - lastTimestamp
+    lastTimestamp = currentTime
+    if not mouseWasDown and mouse.button and not pipeQueueDisplay.animating then
         upcomingPipes.pullPipe
         nextType = upcomingPipes.addPipe
         pipeQueueDisplay.nextPipe nextType
     end if
+    pipeQueueDisplay.update delta
     mouseWasDown = mouse.button
     yield
 end while
