@@ -1,4 +1,5 @@
-import "pipeQueue"
+import "coreUtils"
+ensureImport "pipeQueue"
 
 clear
 
