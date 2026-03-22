@@ -1,10 +1,13 @@
 import "coreUtils"
 ensureImport "pipeQueue"
+ensureImport "pipeQueueDisplay"
 
 clear
 
+queueOrigin = {"x":106, "y" : 224 }
+
 gfx.drawRect 190, 94, 644, 452, color.orange, 2
-gfx.drawRect 104, 222, 68, 324, color.orange, 2
+gfx.drawRect queueOrigin.x - 2, queueOrigin.y - 2, 68, 324, color.orange, 2
 
 display(2).mode = displayMode.tile
 td = display(2)
@@ -24,4 +27,5 @@ for row in range(0,6)
 end for
 
 upcomingPipes = pipeQueue.create
-print upcomingPipes.pipes
+pipeQueueDisplay.setup upcomingPipes, queueOrigin
+pipeQueueDisplay.show display(4)
