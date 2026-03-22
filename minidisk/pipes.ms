@@ -11,20 +11,13 @@ gfx.drawRect queueOrigin.x - 2, queueOrigin.y - 2, 68, 324, color.orange, 2
 
 display(2).mode = displayMode.tile
 td = display(2)
-td.tileSet = file.loadImage("images/test_tiles.png")
+td.tileSet = file.loadImage("images/tileset.png")
 td.tileSetTileSize = 64
 td.extent = [10, 7]
 td.scrollX = -192
 td.scrollY = -96
 
-td.clear 0
-
-for row in range(0,6)
-    for col in range(0,9)
-        cellIdx = (row + col % 2) % 2 + 1
-        td.setCell col, row, cellIdx
-    end for
-end for
+td.clear 3
 
 upcomingPipes = pipeQueue.create
 pipeQueueDisplay.setup upcomingPipes, queueOrigin
@@ -38,9 +31,14 @@ while not key.pressed("escape")
     delta = currentTime - lastTimestamp
     lastTimestamp = currentTime
     if not mouseWasDown and mouse.button and not pipeQueueDisplay.animating then
-        upcomingPipes.pullPipe
-        nextType = upcomingPipes.addPipe
-        pipeQueueDisplay.nextPipe nextType
+        tileX = floor((mouse.x + td.scrollX)/td.cellSize[0])
+        tileY = floor((mouse.y + td.scrollY)/td.cellSize[1])
+        if tileX >= 0 and tileX < td.extent[0] and tileY >= 0 and tileY < td.extent[1] then
+            type = upcomingPipes.pullPipe
+            td.setCell tileX, tileY, type
+            nextType = upcomingPipes.addPipe
+            pipeQueueDisplay.nextPipe nextType
+        end if
     end if
     pipeQueueDisplay.update delta
     mouseWasDown = mouse.button
