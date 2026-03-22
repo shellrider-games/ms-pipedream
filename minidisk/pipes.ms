@@ -1,3 +1,5 @@
+import "pipeQueue"
+
 clear
 
 gfx.drawRect 190, 94, 644, 452, color.orange, 2
@@ -19,3 +21,6 @@ for row in range(0,6)
         td.setCell col, row, cellIdx
     end for
 end for
+
+upcomingPipes = pipeQueue.create
+print upcomingPipes.pipes
