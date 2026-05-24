@@ -17,7 +17,7 @@ td.extent = [10, 7]
 td.scrollX = -192
 td.scrollY = -96
 
-td.clear 3
+td.clear 15
 
 upcomingPipes = pipeQueue.create
 pipeQueueDisplay.setup upcomingPipes, queueOrigin

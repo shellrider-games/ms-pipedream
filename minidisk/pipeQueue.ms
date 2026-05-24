@@ -1,4 +1,4 @@
-pipeTypes = ["horizontal", "vertical"]
+pipeTypes = ["horizontal","north-east", "north-west","south-east","south-west", "vertical"]
 
 pipeQueue = {}
 pipeQueue.size = 5
