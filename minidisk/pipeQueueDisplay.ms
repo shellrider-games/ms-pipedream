@@ -9,7 +9,8 @@ pipeImages = [
     file.loadImage("images/pipes/pipeNW.png"),
     file.loadImage("images/pipes/pipeSE.png"),
     file.loadImage("images/pipes/pipeSW.png"),
-    file.loadImage("images/pipes/pipeV.png")]
+    file.loadImage("images/pipes/pipeV.png"),
+    file.loadImage("images/pipes/pipeX.png")]
 imageExtents = {"width": 64, "height" : 64}
 animationTime = 0.25
 
