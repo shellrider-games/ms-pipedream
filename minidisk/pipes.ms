@@ -16,8 +16,23 @@ td.tileSetTileSize = 64
 td.extent = [10, 7]
 td.scrollX = -192
 td.scrollY = -96
-
 td.clear 15
+
+display(1).mode = displayMode.tile
+waterDisplay = display(1)
+waterDisplay.tileSet = file.loadImage("images/test_tiles.png")
+waterDisplay.tileSetTileSize = 64
+waterDisplay.extent = [10, 7]
+waterDisplay.scrollX = -192
+waterDisplay.scrollY = -96
+waterDisplay.clear 1
+
+for r in range(0,waterDisplay.extent[1] - 1)
+    for c in range(0, waterDisplay.extent[0] - 1)
+        waterDisplay.setCellTint c, r, color.clear
+    end for
+end for
+
 
 upcomingPipes = pipeQueue.create
 pipeQueueDisplay.setup upcomingPipes, queueOrigin
